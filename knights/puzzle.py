@@ -16,8 +16,8 @@ knowledge0 = And(
     Or(AKnight, AKnave),
     Not(And(AKnight, AKnave)),
     # A says I am both knight and knave
-    Biconditional(AKnight, And(Akinght, AKnave)),
-    Biconditional(AKnave, Not(And(Aknight, AKnave)))
+    Biconditional(AKnight, And(AKnight, AKnave)),
+    Biconditional(AKnave, Not(And(AKnight, AKnave)))
 )
 
 # Puzzle 1
@@ -30,7 +30,7 @@ knowledge1 = And(
     Not(And(BKnight, BKnave)),
 
     Implication(AKnight, And(AKnave, BKnave)),
-    Implication(AKnave, Not(And(AKnave, BKnave))
+    Implication(AKnave, Not(And(AKnave, BKnave)))
 )
 
 # Puzzle 2
@@ -62,10 +62,12 @@ knowledge3 = And(
     Or(CKnight, CKnave),
     Not(And(CKnight, CKnave)),
 
-    Bıconditional(Aknight, Or(AKnight, AKnave)),
-    Biconditional(BKnight, Biconditional(Aknight, AKnave)),
-    Biconditional(BKnight, CKnight),
-    Biconditional(CKnight, AKnight)
+    Biconditional(Or(AKnight, AKnight), Or(AKnight, AKnave)),
+    Biconditional(BKnight, Biconditional(AKnight, AKnave)),
+    Implication(BKnight, CKnave),
+    Implication(BKnave, Not(CKnave)),
+    Implication(CKnight, AKnight),
+    Implication(CKnave, Not(AKnight))
 )
 
 
